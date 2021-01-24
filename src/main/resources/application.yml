@@ -1,0 +1,12 @@
+server:
+  servlet:
+    context-path: /api
+  port: 8082
+
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/codebetterdb
+    username: postgres
+    password: passwd123
+    pool-size: 30
+
