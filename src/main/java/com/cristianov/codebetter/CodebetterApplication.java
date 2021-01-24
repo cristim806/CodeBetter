@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CodebetterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CodebetterApplication.class, args);
+		 SpringApplication.run(CodebetterApplication.class, args);
 	}
 
 }
