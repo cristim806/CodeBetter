@@ -38,7 +38,7 @@ public class StudentDataAccessService {
                 " last_name," +
                 " email," +
                 " gender)" +
-                "VALUES (?,?,?,?,?)";
+                "VALUES (?,?,?,?,?::gender)";
         return  jdbcTemplate.update(
                 sql,
                 studentId,
@@ -62,5 +62,21 @@ public class StudentDataAccessService {
             Student.Gender gender = Student.Gender.valueOf(genderStr);
             return new Student(studentId, firstName, lastName, email, gender);
         };
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    boolean isEmailTaken(String email) {
+        String sql = "" +
+                "SELECT EXISTS ( " +
+                " SELECT 1 " +
+                " FROM student " +
+                " WHERE email = ? " +
+                ")";
+
+        return jdbcTemplate.queryForObject(
+                sql,
+                new Object[] {email},
+                (resultSet, i) -> resultSet.getBoolean(1)
+        );
     }
 }
