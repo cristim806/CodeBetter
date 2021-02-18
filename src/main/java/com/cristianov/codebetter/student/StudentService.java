@@ -34,15 +34,17 @@ public class StudentService {
         UUID newStudentId = Optional.ofNullable(studentId)
                 .orElse(UUID.randomUUID());
 
-        if (!emailValidator.test(student.getEmail())){
+        if (!emailValidator.test(student.getEmail())) {
             throw new ApiRequestException(student.getEmail() + " is not invalid");
         }
-        //TODO: Verify that email is not taken
 
         if (studentDataAccessService.isEmailTaken(student.getEmail())){
             throw new ApiRequestException(student.getEmail() + " is taken");
         }
-
         studentDataAccessService.insertStudent(newStudentId, student);
+    }
+
+    List<StudentCourse> getAllCoursesForStudent(UUID studentId){
+        return studentDataAccessService.selectAllStudentCourses(studentId);
     }
 }
