@@ -16,6 +16,8 @@ public class Student {
     @NotBlank
     private final String lastName;
 
+    //test packaging
+
     @Email
     private final String email;
 
