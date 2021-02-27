@@ -1,6 +1,9 @@
+spring:
+    profiles:
+        active: @spring.profiles.active@
 server:
   servlet:
-    context-path: /api
+    context-path: /
   port: 8082
 
 app:
