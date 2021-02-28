@@ -21,6 +21,8 @@ public class Student {
     @Email
     private final String email;
 
+    // comment for test 1
+
     @NotNull
     private final Gender gender;
 
